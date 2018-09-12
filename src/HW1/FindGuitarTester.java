@@ -1,4 +1,5 @@
 package HW1;
+/*mpailla*/
 public class FindGuitarTester {
 
   public static void main(String[] args) {
@@ -6,7 +7,7 @@ public class FindGuitarTester {
     Inventory inventory = new Inventory();
     initializeInventory(inventory);
 
-    Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor", 
+    Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor",
                                       "electric", "Alder", "Alder");
     Guitar guitar = inventory.search(whatErinLikes);
     if (guitar != null) {
