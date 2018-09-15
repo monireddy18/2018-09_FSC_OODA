@@ -1,22 +1,22 @@
 /**
  * Class		: Object-Oriented Design and Analysis
  * Professor	: Orlando Montalvo
- * Assignment	: HW 1 
+ * Assignment	: HW 1
  * Date			: 2018-09-15
  * Students		: Mounika Pailla (@01393337)
  */
 package HW1.edu.fitchburgstate.csc7400;
 /**
- * FindGuitarTester has methods to call Guitar and Inventory classes' methods to provide 
+ * FindGuitarTester has methods to call Guitar and Inventory classes' methods to provide
  * details of matching guitar according to customer requirements
- * 
+ *
  * @author Mounika Pailla
  * @version 1.0
  */
 public class FindGuitarTester {
 	/**
 	 * Publishes guitar data based on the input created in the method
-	 * 
+	 *
 	 * @param args Unused
 	 * @return void
 	 */
@@ -25,7 +25,7 @@ public class FindGuitarTester {
     Inventory inventory = new Inventory();
     initializeInventory(inventory);
 
-    Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor", 
+    Guitar whatErinLikes = new Guitar("", 0, "fender", "Stratocastor",
                                       "electric", "Alder", "Alder");
     Guitar guitar = inventory.search(whatErinLikes);
     if (guitar != null) {
@@ -42,7 +42,7 @@ public class FindGuitarTester {
 
   	/**
 	 * Initializes inventory data with multiple guitar details
-	 * 
+	 *
 	 * @param inventory Inventory class object
 	 * @return void nothing is returned
 	 */
