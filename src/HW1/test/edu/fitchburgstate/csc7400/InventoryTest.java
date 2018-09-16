@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
  */
 public class InventoryTest {
     Inventory testInventory;
+    Guitar testGuitar;
 
     /**
      * Test data setup. Add guitar data to inventory
