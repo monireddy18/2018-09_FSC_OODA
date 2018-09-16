@@ -30,27 +30,11 @@ public class Guitar {
 	 * @param type guitar type (electric/accoustic)
 	 * @param backWood the wood used for the guitar body
 	 * @param topWood the wood used for the guitar's face
-	 * 
-	 * @precondition serialNumber is not empty
-     * @precondition price > 0
-     * @precondition manufacturer != null
-     * @precondition model is not empty
-     * @precondition type != null
-     * @precondition backWood != null
-     * @precondition topWood != null
 	 */
 	public Guitar(String serialNumber, double price, 
 			String manufacturer, String model, 
 			String type, String backWood,
-			String topWood) {
-		
-		assert serialNumber != null && !serialNumber.isEmpty();
-	    assert price > 0.0;
-	    assert manufacturer != null;
-	    assert model != null && !model.isEmpty();
-		assert type != null;
-		assert backWood != null;
-		assert topWood != null;
+			String topWood) {		
 		
 		this.serialNumber = serialNumber;
 		this.price = price;

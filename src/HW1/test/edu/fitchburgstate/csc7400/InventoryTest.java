@@ -9,108 +9,176 @@
 package HW1.test.edu.fitchburgstate.csc7400;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import HW1.edu.fitchburgstate.csc7400.Guitar;
+import HW1.edu.fitchburgstate.csc7400.Inventory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import HW1.edu.fitchburgstate.csc7400.Guitar;
-import HW1.edu.fitchburgstate.csc7400.Inventory;
-
 /**
  * InventoryTest contains test methods to test all the methods present in Inventory class.
- * This class creates mock data and calls the test methods using this data.
+ * InventoryTest has test objects of inventory and guitar classes.
+ * Contains tests to test methods of Inventory class.
  * 
  * @author Mounika Pailla
  * @version 1.0 
+ * 
  */
+public class InventoryTest {
+    Inventory testInventory;
 
-class InventoryTest {
+    /**
+     * Test data setup. Add guitar data to inventory
+     */
+    @BeforeEach
+    public void setup() {
+        // instantiate inventory class
+        testInventory = new Inventory();
 
-	Inventory testInventory;
-	
-	
-	@BeforeEach
-	void setUp() throws Exception {
-		this.testInventory = new Inventory();
-		testInventory.addGuitar("11277", 3999.95, "Collings", "CJ", "acoustic",
-                "Indian Rosewood", "Sitka");
-		testInventory.addGuitar("V95693", 1499.95, "Fender", "Stratocastor", "electric",
-                "Alder", "Alder");		
-	}
+        testGuitar = new Guitar("0001", 1009.99, "Manufacturer1", "Model1", "type1",
+                "backwood1", "topwood1");
 
-	/**
-	   * 
-	   * Tests addGuitar() method in Inventory class
-	   * 
-	   * @param nothing
-	   * @return void
-	   */
-	@Test
-	void testAddGuitar() {
-		String serialNumber = "AB123"; 
-		double price=	203.35; 
-		String builder = "Gibson"; 
-		String model=	"EasyLearn"; 
-		String type =	"electric"; 
-		String backWood = "Maple"; 
-		String topWood = "Adirondack" ;
-		
-		try {
-		this.testInventory.addGuitar(serialNumber, price, builder, model, type, backWood, topWood);
-		assertTrue(true);
-		}
-		catch(Exception e)
-		{
-			fail("Object not added");
-		}
-		 
-	}
+        testInventory.addGuitar(testGuitar.getSerialNumber(), testGuitar.getPrice(), testGuitar.getManufacturer(),
+                testGuitar.getModel(), testGuitar.getType(), testGuitar.getBackWood(), testGuitar.getTopWood());
+        
+    }
 
-	/**
-	   * 
-	   * Tests getGuitar() method in Inventory class
-	   * 
-	   * @param nothing
-	   * @return void
-	   */
-	@Test
-	void testGetGuitar() {
-		String serialNumber = "11277";
-		Guitar expected = new Guitar("11277", 3999.95, "Collings", "CJ", "acoustic",
-                "Indian Rosewood", "Sitka");
-		Guitar returned = this.testInventory.getGuitar(serialNumber);
-		assertEquals(expected.getSerialNumber(), returned.getSerialNumber());
-		assertEquals(expected.getBackWood(), returned.getBackWood());
-		assertEquals(expected.getManufacturer(), returned.getManufacturer());
-		assertEquals(expected.getModel(), returned.getModel());
-		assertEquals(expected.getPrice(), returned.getPrice());
-		assertEquals(expected.getTopWood(), returned.getTopWood());
-		
-		
-	}
+    /**
+     * Tests getGuitar() method by passing serial number as parameter
+     */
+    @Test
+    void test_GetGuitar_SerialNumber() {
+        Guitar actual = testInventory.getGuitar(testGuitar.getSerialNumber());
+        Guitar expected = testGuitar;
+        assertEquals(actual.getSerialNumber(), expected.getSerialNumber());
+        assertEquals(actual.getManufacturer(), expected.getManufacturer());
+        assertEquals(actual.getModel(), expected.getModel());
+        assertEquals(actual.getPrice(), expected.getPrice());
+        assertEquals(actual.getType(), expected.getType());
+        assertEquals(actual.getTopWood(), expected.getTopWood());
+        assertEquals(actual.getBackWood(), expected.getBackWood());
+    }
 
-	/**
-	   * 
-	   * Tests addGuitar() method in Inventory class
-	   * 
-	   * @param nothing
-	   * @return void
-	   */
-	@Test
-	void testSearch() {
-		Guitar searchGuitar = new Guitar("V95693", 1499.95, "Fender", "Stratocastor", "electric",
-                "Alder", "Alder");
-		Guitar expected = new Guitar("V95693", 1499.95, "Fender", "Stratocastor", "electric",
-                "Alder", "Alder");
-		Guitar returned = this.testInventory.search(searchGuitar);
-		assertEquals(expected.getSerialNumber(), returned.getSerialNumber());
-		assertEquals(expected.getBackWood(), returned.getBackWood());
-		assertEquals(expected.getManufacturer(), returned.getManufacturer());
-		assertEquals(expected.getModel(), returned.getModel());
-		assertEquals(expected.getPrice(), returned.getPrice());
-		assertEquals(expected.getTopWood(), returned.getTopWood());
-		}
-	
-	
+    
 
-}
+    /**
+     * Tests if a Guitar is returned when backwood parameter is passed to search.
+     */
+    @Test
+    void test_SearchGuitar_Backwood() {
+        Guitar expected = new Guitar("", 0, "", null, null, "backwood1","");
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(actual.getBackWood(), expected.getBackWood());
+    }
+
+    /**
+     * Tests if a Guitar is returned when topwood parameter is passed to search 
+     */
+    @Test
+    void test_SearchGuitar_Topwood() {
+        Guitar expected = new Guitar("", 0, "", null, null, "","topwood1");
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(actual.getTopWood(), expected.getTopWood());
+    }
+
+    /**
+     * Tests if a Guitar is returned when model parameter is passed to search
+     */
+    @Test
+    void test_SearchGuitar_Model() {
+        Guitar expected = new Guitar("", 0, "", "Model1", null,
+                "", "");
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(actual.getModel(), expected.getModel());
+    }
+
+    /**
+     * Tests if a Guitar is returned when type parameter is passed to search
+     */
+    @Test
+    void test_SearchGuitar_Type() {
+        Guitar expected = new Guitar("", 0, "", null, "type1",
+                "", "");
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(actual.getType(), expected.getType());
+    }
+
+    /**
+     * Tests if a Guitar is returned when manufacturer name is passed to search
+     */
+    @Test
+    void test_SearchGuitar_Manufacturer() {
+        Guitar expected = new Guitar("", 0, "Manufacturer1", "", null,
+                "", "");
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(actual.getManufacturer(), expected.getManufacturer());
+    }
+
+    /**
+     * Tests search method by passing a manufacturer of a guitar that is not preset in the inventory
+     */
+    @Test
+    void test_SearchGuitar_UnlistedManufacturer() {
+        Guitar expected = new Guitar(null, 0, "MP", null, null, null, null);
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(null, actual);
+    }
+
+    /**
+     * Tests search method by passing a model of a guitar that is not preset in the inventory
+     */
+    @Test
+    void test_SearchGuitar_UnlistedModel() {
+        Guitar expected = new Guitar(null, 0, null, "model2", null,
+                null, null);
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(null, actual);
+    }
+
+    /**
+     * Tests search method by passing a type of a guitar that is not preset in the inventory
+     */
+    @Test
+    void test_SearchGuitar_UnlistedType() {
+        Guitar expected = new Guitar(null, 0, null, null, "type2",
+                null, null);
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(null, actual);
+    }
+
+    /**
+     * Tests search method by passing a backwood of a guitar that is not preset in the inventory
+     */
+    @Test
+    void test_SearchGuitar_UnlistedBackwood() {
+        Guitar expected = new Guitar(null, 0, null, null, null,
+                "backwood2", null);
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(null, actual);
+    }
+
+    /**
+     * Tests search method by passing a topwood of a guitar that is not preset in the inventory
+     */
+    @Test
+    void test_SearchGuitar_UnlistedTopwood() {
+        Guitar expected = new Guitar(null, 0, null, null, null,
+                "", "topwood2");
+
+        Guitar actual = testInventory.search(expected);
+        assertEquals(null, actual);
+    }   
+    
+
+        
+    }
+
+
