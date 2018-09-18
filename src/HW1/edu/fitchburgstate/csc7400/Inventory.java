@@ -1,8 +1,8 @@
 /**
  * Class		: Object-Oriented Design and Analysis
  * Professor	: Orlando Montalvo
- * Assignment	: HW 1 
- * Date			: 2018-09-15
+ * Assignment	: HW 2 
+ * Date			: 2018-09-18
  * Students		: Mounika Pailla (@01393337)
  */
 package HW1.edu.fitchburgstate.csc7400;
@@ -17,7 +17,7 @@ import java.util.List;
  * and to get details about a specific guitar. 
  * 
  * @author Mounika Pailla
- * @version 1.0
+ * @version 1.1
  */
 public class Inventory {
   private List<Guitar> guitars = new LinkedList<Guitar>();
@@ -42,8 +42,8 @@ public class Inventory {
      * @param topWood Guitar Topwood
      */
   public void addGuitar(String serialNumber, double price,
-                        String builder, String model,
-                        String type, String backWood, String topWood) {
+                        Manufacturer builder, String model,
+                        Type type, Wood backWood, Wood topWood) {
     Guitar guitar = new Guitar(serialNumber, price, builder,
                                model, type, backWood, topWood);
     guitars.add(guitar);
@@ -56,7 +56,7 @@ public class Inventory {
    * @return Guitar guitar that matches serial number, null if not found
    */
   public Guitar getGuitar(String serialNumber) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+    for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
       Guitar guitar = (Guitar)i.next();
       if (guitar.getSerialNumber().equals(serialNumber)) {
         return guitar;
@@ -66,39 +66,58 @@ public class Inventory {
   }
   
   /**
+   * Searches inventory and returns guitar matching with given price
+   * 
+   * @param price price of guitar
+   * @return List<Guitar> list of all guitars that match price, null if not found
+   */
+  public List<Guitar> searchGuitarsByPrice(double price) {
+	  List<Guitar> priceMatchedGuitars = new LinkedList<Guitar>();
+	  for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
+      Guitar guitar = (Guitar)i.next();
+      if (guitar.getPrice() == price) {
+    	  priceMatchedGuitars.add(guitar);
+      }
+    }
+    return priceMatchedGuitars;
+  }
+  
+  /**
+   * Searches inventory and returns guitar matching with given price
+   * 
+   * @param startPrice, endPrice the price range of the guitars to be returned
+   * @return List<Guitar> list of all guitars that are in the price range which is passed,
+   * 					 null if not found
+   */
+  public List<Guitar> searchGuitarsByPriceRange(double startPrice, double endPrice) {
+	  List<Guitar> guitarsInPriceRange = new LinkedList<Guitar>();
+    for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
+      Guitar guitar = (Guitar)i.next();
+      int diff1 = Double.compare(startPrice, guitar.getPrice());
+      int diff2 = Double.compare(endPrice, guitar.getPrice());
+      if((diff1<=0)&&(diff2>=0)) 
+      {
+		 guitarsInPriceRange.add(guitar);
+      }
+    }
+    return guitarsInPriceRange;
+  }
+  
+  /**
    * 
    * Finds and returns the guitar that matches given guitar
    * 
    * @param searchGuitar Guitar object with given properties
    * @return Guitar Guitar object that matches given guitar, null if not found
    */
-  public Guitar search(Guitar searchGuitar) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+  public List<Guitar> search(GuitarSpec searchGuitar) {
+	  List<Guitar> matchedList = new LinkedList<Guitar>();
+	 for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
       Guitar guitar = (Guitar)i.next();
-      // Ignore serial number since that's unique
-      // Ignore price since that's unique
-      String builder = searchGuitar.getManufacturer();
-      if ((builder != null) && (!builder.equals("")) &&
-          (!builder.toLowerCase().equals(guitar.getManufacturer().toLowerCase())))
-        continue;
-      String model = searchGuitar.getModel();
-      if ((model != null) && (!model.equals("")) &&
-          (!model.toLowerCase().equals(guitar.getModel().toLowerCase())))
-        continue;
-      String type = searchGuitar.getType();
-      if ((type != null) && (!searchGuitar.equals("")) &&
-          (!type.toLowerCase().equals(guitar.getType().toLowerCase())))
-        continue;
-      String backWood = searchGuitar.getBackWood();
-      if ((backWood != null) && (!backWood.equals("")) &&
-          (!backWood.toLowerCase().equals(guitar.getBackWood().toLowerCase())))
-        continue;
-      String topWood = searchGuitar.getTopWood();
-      if ((topWood != null) && (!topWood.equals("")) &&
-          (!topWood.toLowerCase().equals(guitar.getTopWood().toLowerCase())))
-        continue;
-      return guitar;
-    }
-    return null;
+      GuitarSpec guitarSpec = guitar.getSpec();
+      if(searchGuitar.Match(guitarSpec))
+    	  matchedList.add(guitar);
+    }    
+    return matchedList;
   }
 }

@@ -1,25 +1,43 @@
 /**
  * Class		: Object-Oriented Design and Analysis
  * Professor	: Orlando Montalvo
- * Assignment	: HW 1 
- * Date			: 2018-09-15
+ * Assignment	: HW 2 
+ * Date			: 2018-09-18
  * Students		: Mounika Pailla (@01393337)
  */
 
 package HW1.edu.fitchburgstate.csc7400;
 
+import HW1.edu.fitchburgstate.csc7400.Wood;
+import HW1.edu.fitchburgstate.csc7400.Manufacturer;
+import HW1.edu.fitchburgstate.csc7400.Type;
+
 /**
  * Guitar contains information about guitars from Rick's music store.
- * This data contains manufacturer, manufacturer's serial number, price, model,
- * type of guitar and so on. This information can be used to search guitars 
- * in the inventory.
+ * This data contains manufacturer's serial number, price and GuitarSpec which has further attributes of a guitar. 
+ * This information can be used to search guitars in the inventory.
  * 
  * @author Mounika Pailla
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Guitar {
 
+	/**
+	 * The guitar's manufacturer serial number
+	 */
+	private String serialNumber;
+
+	/**
+	 * Rick's price for the guitar
+	 */
+	private double price;	
+	
+	/**
+	 * guitarSpec object to hold the specifications of Guitar
+	 */
+	private GuitarSpec guitarSpec;
+	
 	/**
 	 * Full constructor
 	 * 
@@ -32,19 +50,17 @@ public class Guitar {
 	 * @param topWood the wood used for the guitar's face
 	 */
 	public Guitar(String serialNumber, double price, 
-			String manufacturer, String model, 
-			String type, String backWood,
-			String topWood) {		
+			Manufacturer manufacturer, String model, 
+			Type type, Wood backWood,
+			Wood topWood) {		
 		
 		this.serialNumber = serialNumber;
 		this.price = price;
-		this.manufacturer = manufacturer;
-		this.model = model;
-		this.type = type;
-		this.backWood = backWood;
-		this.topWood = topWood;
-	}
-
+		//Build a GuitarSpec object
+		GuitarSpec spec = new GuitarSpec(manufacturer, model,type, backWood, topWood);
+	    this.guitarSpec = spec;
+	}	
+	
 	/**
 	 * Returns the manufacturer serial number	 
 	 */
@@ -65,79 +81,27 @@ public class Guitar {
 	public void setPrice(double newPrice) {
 		this.price = newPrice;
 	}
+	
+	/**
+	 * Sets specifications of the guitar - GuitarSpec object
+	 * 
+	 * @param spec GuitarSpec object
+	 */
+	  
+	 public void setSpec(GuitarSpec spec)
+	 {
+		 this.guitarSpec = spec;
+	 }
 
 	/**
-	 * Returns the name of the manufacturer
-	 * @return manufacturer name of the manufacturer
+	 * Returns specifications of the guitar - GuitarSpec object
+	 * 
+	 * @return GuitarSpec returns GuitarSpec object of a guitar
 	 */
-	public String getManufacturer() {
-		return this.manufacturer;
-	}
-
-	/**
-	 * Returns the manufacturer model
-	 * @return model manufacturer model
-	 */
-	public String getModel() {
-		return model;
-	}
-
-	/**
-	 * Returns the guitar type
-	 * @return type type of guitar
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
-	 * Returns the type of wood used in the body
-	 * @return backWood type of wood used in the body
-	 */
-	public String getBackWood() {
-		return backWood;
-	}
-
-	/**
-	 * Returns the type of wood used in the face
-	 * @return topWood type of wood used in the face
-	 */
-	public String getTopWood() {
-		return topWood;
-	}
-
-	/**
-	 * The guitars manufacturer serial number
-	 */
-	private String serialNumber;
-
-	/**
-	 * The name of the manufacturer
-	 */
-	private String manufacturer;
-
-	/**
-	 * The manufacturer model number
-	 */
-	private String model;
-
-	/**
-	 * The guitar type (electric/acoustic)
-	 */
-	private String type;
-
-	/**
-	 * The wood used for the back of the guitar
-	 */
-	private String backWood;
-
-	/**
-	 * The wood used for the face of the guitar
-	 */
-	private String topWood;
-
-	/**
-	 * Rick's price for the guitar
-	 */
-	private double price;
+	  
+	 public GuitarSpec getSpec()
+	 {
+		 return guitarSpec;
+	 }
+	
 }
