@@ -56,7 +56,7 @@ public class Inventory {
    * @return Guitar guitar that matches serial number, null if not found
    */
   public Guitar getGuitar(String serialNumber) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+    for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
       Guitar guitar = (Guitar)i.next();
       if (guitar.getSerialNumber().equals(serialNumber)) {
         return guitar;
@@ -73,7 +73,7 @@ public class Inventory {
    * @return Guitar Guitar object that matches given guitar, null if not found
    */
   public Guitar search(Guitar searchGuitar) {
-    for (Iterator i = guitars.iterator(); i.hasNext(); ) {
+    for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
       Guitar guitar = (Guitar)i.next();
       // Ignore serial number since that's unique
       // Ignore price since that's unique
@@ -86,7 +86,7 @@ public class Inventory {
           (!model.toLowerCase().equals(guitar.getModel().toLowerCase())))
         continue;
       String type = searchGuitar.getType();
-      if ((type != null) && (!searchGuitar.equals("")) &&
+      if ((type != null) && (!type.equals("")) &&
           (!type.toLowerCase().equals(guitar.getType().toLowerCase())))
         continue;
       String backWood = searchGuitar.getBackWood();

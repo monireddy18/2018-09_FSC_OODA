@@ -16,9 +16,9 @@ package HW1.edu.fitchburgstate.csc7400;
 public class FindGuitarTester {
 	/**
 	 * Publishes guitar data based on the input created in the method
+	 * Displays message to the user according to the search parameters provided
 	 *
 	 * @param args Unused
-	 * @return void
 	 */
   public static void main(String[] args) {
     // Set up Rick's guitar inventory
@@ -44,7 +44,6 @@ public class FindGuitarTester {
 	 * Initializes inventory data with multiple guitar details
 	 *
 	 * @param inventory Inventory class object
-	 * @return void nothing is returned
 	 */
   private static void initializeInventory(Inventory inventory) {
     inventory.addGuitar("11277", 3999.95, "Collings", "CJ", "acoustic",

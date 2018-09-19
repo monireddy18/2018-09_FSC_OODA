@@ -28,8 +28,6 @@ class GuitarTest {
 	   * 
 	   * Sets up the mock guitar object with data
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@BeforeEach
 	void setUp() throws Exception {
@@ -47,9 +45,8 @@ class GuitarTest {
 	/**
 	   * 
 	   * Tests getSerialNumber() method in Guitar class
+	   * Test fails if the serial number returned doesn't match with the mock object's serial number
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetSerialNumber() {
@@ -61,9 +58,8 @@ class GuitarTest {
 	/**
 	   * 
 	   * Tests getPrice() method in Guitar class
+	   * Test fails if the price of the guitar returned doesn't match with the mock guitar's price
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetPrice() {
@@ -74,10 +70,9 @@ class GuitarTest {
 
 	/**
 	   * 
-	   * Tests getSetPrice() method in Guitar class
+	   * Tests setPrice() method in Guitar class
+	   * Test fails if the price returned doesn't match with the price that is set using setPrice()
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testSetPrice() {
@@ -90,9 +85,8 @@ class GuitarTest {
 	/**
 	   * 
 	   * Tests getManufacturer() method in Guitar class
+	   * Test fails if the guitar's manufacturer returned doesn't match with the mock guitar's manufacturer
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetManufacturer() {
@@ -104,9 +98,8 @@ class GuitarTest {
 	/**
 	   * 
 	   * Tests getModel() method in Guitar class
+	   * Test fails if the guitar's model returned doesn't match with the mock guitar's model
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetModel() {
@@ -118,9 +111,8 @@ class GuitarTest {
 	/**
 	   * 
 	   * Tests getType() method in Guitar class
+	   * Test fails if the guitar's type returned doesn't match with the mock guitar's type
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetType() {
@@ -132,9 +124,8 @@ class GuitarTest {
 	/**
 	   * 
 	   * Tests getBackWood() method in Guitar class
+	   * Test fails if the guitar's backwood returned doesn't match with the mock guitar's backwood
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetBackWood() {
@@ -145,10 +136,9 @@ class GuitarTest {
 
 	/**
 	   * 
-	   * Tests getTopWood() method in Guitar class
-	   * 
-	   * @param nothing
-	   * @return void
+	   * Tests getTopWood() method in Guitar class	   *
+	   * Test fails if the guitar's topwood returned doesn't match with the mock guitar's topwood
+	   *  
 	   */
 	@Test
 	void testGetTopWood() {

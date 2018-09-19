@@ -23,10 +23,10 @@ public class Guitar {
 	/**
 	 * Full constructor
 	 * 
-	 * @param serialNumber manufacturer serial number
-	 * @param price store price
-	 * @param manufacturer the guitar's manufacturer
-	 * @param model the manufacturers model
+	 * @param serialNumber Guitar's serial number in Rick's inventory
+	 * @param price price of the guitar
+	 * @param manufacturer the guitar's manufacturer name
+	 * @param model the guitar's model
 	 * @param type guitar type (electric/accoustic)
 	 * @param backWood the wood used for the guitar body
 	 * @param topWood the wood used for the guitar's face
@@ -46,14 +46,14 @@ public class Guitar {
 	}
 
 	/**
-	 * Returns the manufacturer serial number	 
+	 * Returns the serial number of the guitar	 
 	 */
 	public String getSerialNumber() {
 		return serialNumber;
 	}
 
 	/**
-	 * Returns store price of guitar
+	 * Returns price of the guitar
 	 */
 	public double getPrice() {
 		return price;
@@ -75,8 +75,8 @@ public class Guitar {
 	}
 
 	/**
-	 * Returns the manufacturer model
-	 * @return model manufacturer model
+	 * Returns the model of the guitar
+	 * @return model model of the guitar
 	 */
 	public String getModel() {
 		return model;
@@ -107,7 +107,7 @@ public class Guitar {
 	}
 
 	/**
-	 * The guitars manufacturer serial number
+	 * The guitars serial number
 	 */
 	private String serialNumber;
 
@@ -117,7 +117,7 @@ public class Guitar {
 	private String manufacturer;
 
 	/**
-	 * The manufacturer model number
+	 * The model name of the guitar
 	 */
 	private String model;
 
