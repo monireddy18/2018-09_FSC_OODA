@@ -24,7 +24,7 @@ import HW1.edu.fitchburgstate.csc7400.Type;
 public class Guitar {
 
 	/**
-	 * The guitar's manufacturer serial number
+	 * The guitar's serial number
 	 */
 	private String serialNumber;
 
@@ -62,7 +62,7 @@ public class Guitar {
 	}	
 	
 	/**
-	 * Returns the manufacturer serial number	 
+	 * Returns the Guitar's serial number	 
 	 */
 	public String getSerialNumber() {
 		return serialNumber;

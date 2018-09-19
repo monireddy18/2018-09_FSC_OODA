@@ -51,22 +51,34 @@ public class GuitarSpec {
 	 {
 		 String model=""; 
 		/**'this' refers to object of SearchGuitar through which the method is called 
-		 * and guitarspec refers to parameter passed
+		 * and guitarspec refers to GuitarSpec object that is passed as a parameter
 		 */		 
 		 if(this.getModel() != null && !this.getModel().equals(""))
 		 {
 			model = this.getModel().toLowerCase();    
-		 }
+		 }		 
+		 //check if every attribute is null or empty and return false
+		 if(this.getManufacturer() == null && ((this.getModel() == null) || (this.getModel().equals("")))
+				 && this.getType() == null && this.getBackWood() == null && this.getTopWood() == null)
+			 return false;		 
 		 //compare all the properties of guitar
 		 if ((this.getManufacturer() == null ) || (this.getManufacturer() == guitarspec.getManufacturer())) 
-		  {if ((this.getModel() == null) || (this.getModel().equals("")) ||
-		          (model.equalsIgnoreCase(guitarspec.getModel())))
-		   {if ((this.getType() == null ) || (this.getType() == guitarspec.getType()))
-		    {if ((this.getBackWood() == null ) || (this.getBackWood() == guitarspec.getBackWood()))
-		     {if ((this.getTopWood() == null ) || (this.getTopWood() == guitarspec.getTopWood()))
-		      return true;
-		     }}}}
-		 return false;
+		 {
+			 //ignore lowercase/uppercase while comparing
+			 if ((this.getModel() == null) || (this.getModel().equals("")) 
+					 || (model.equalsIgnoreCase(guitarspec.getModel())))
+			 {
+				 if ((this.getType() == null ) || (this.getType() == guitarspec.getType()))
+				 {
+					 if ((this.getBackWood() == null ) || (this.getBackWood() == guitarspec.getBackWood()))
+					 {
+						 if ((this.getTopWood() == null ) || (this.getTopWood() == guitarspec.getTopWood()))
+							 return true;
+					 }
+				 }
+			}
+		}
+		return false;
 	 }
 	 
 	 /**

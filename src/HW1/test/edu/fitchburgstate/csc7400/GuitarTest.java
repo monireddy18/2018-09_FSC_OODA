@@ -32,8 +32,6 @@ class GuitarTest {
 	   * 
 	   * Sets up the mock guitar object with data
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@BeforeEach
 	void setUp() throws Exception {
@@ -52,8 +50,6 @@ class GuitarTest {
 	   * 
 	   * Tests getSerialNumber() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetSerialNumber() {
@@ -66,8 +62,6 @@ class GuitarTest {
 	   * 
 	   * Tests getPrice() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetPrice() {
@@ -80,8 +74,6 @@ class GuitarTest {
 	   * 
 	   * Tests getSetPrice() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testSetPrice() {
@@ -95,8 +87,6 @@ class GuitarTest {
 	   * 
 	   * Tests getManufacturer() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetManufacturer() {
@@ -110,8 +100,6 @@ class GuitarTest {
 	   * 
 	   * Tests getModel() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetModel() {
@@ -124,8 +112,6 @@ class GuitarTest {
 	   * 
 	   * Tests getType() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetType() {
@@ -139,8 +125,6 @@ class GuitarTest {
 	   * 
 	   * Tests getBackWood() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetBackWood() {
@@ -154,8 +138,6 @@ class GuitarTest {
 	   * 
 	   * Tests getTopWood() method in Guitar class
 	   * 
-	   * @param nothing
-	   * @return void
 	   */
 	@Test
 	void testGetTopWood() {
